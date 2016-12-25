@@ -184,20 +184,25 @@ body {
 
 
 
+
+
+
 <div class="login-page" ng-app="" >
   <div class="form">
     </form>
     <form class="login-form">
-    <span class="font49"><b>New Year  wishes</b></span>
+    <span class="font49"><b>Merry Christmas</b></span>
       <input type="text" ng-model="thanks"   id="name" placeholder="Name"/>
     
     </form>
-<button onclick="myFunction()">Generate</button>
+<button onclick="sharewhatsapp()" ng-click="show_share=true">Generate</button>
       <p class="message">Type name then click generate button automatically genetate  link below </p>
       
-    <h4 id="demo">Link</h4>
-<h4>share</h4>
-  <span>
+    <h4 ng-show="show_share" id="demo">Link
+<a href="{{'http://saywish.github.io/new.html?ql='+thanks}}" >{{'http://saywish.github.io/new.html?ql='+thanks}}</a>
+    </h4>
+<h4 ng-show="show_share">share</h4>
+  <span ng-show="show_share">
     
 <a href="http://www.facebook.com/sharer.php?u=https://saywish.github.io/new.html?ql={{thanks}}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
@@ -206,7 +211,8 @@ body {
     <a href="https://twitter.com/share?url=https://saywish.github.io/new.html?ql={{thanks}}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
     </a>
-    <a href="whatsapp://send?text=https://saywish.github.io/new.html?ql={{thanks}}" data-action="share/whatsapp/share">        <img src="whatsapp.png" alt="Whatsapp" /></a>
+    
+    <a id="whatsapp"   data-action="share/whatsapp/share">        <img src="whatsapp.png" alt="Whatsapp" /></a>
 
  <a href="https://plus.google.com/share?url=https://saywish.github.io/new.html?ql={{thanks}}" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
@@ -226,14 +232,25 @@ Developed and Maintained by <strong>Switch</strong>
 </body>
 
 <script>
+
+
   
+
 function myFunction() {
-    var str1 = "http://saywish.github.io/new.html?ql=";
-    var str2=document.getElementById('name').value;
+    var str1 = "http://saywish.github.io/new.html?ql="; var str2=document.getElementById('name').value;
     var res = str1.concat(str2);
     var onclick="'http://sh.st/4hCSs'";
     document.getElementById("demo").innerHTML = "<a href='"+res+"' onclick='window.open('http://sh.st/4hCSs's)'>"+res+"</a>";
+
   
 }
+function sharewhatsapp()
+{var str2=document.getElementById('name').value;
+  
+var a = document.getElementById('whatsapp'); //or grab it by tagname etc
+a.href = "whatsapp://send?text=https://saywish.github.io/new.html?ql="+str2
+}
+
+
 </script>
 </html>
